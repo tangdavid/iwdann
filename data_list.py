@@ -111,6 +111,19 @@ def build_uspsmnist(l, path, root_folder, device='cpu'):
     return loaded_dset_source.samples.to(device
                                          ), loaded_dset_source.targets.to(device)
 
+def build_iwild(l, path, root_folder, device='cpu'):
+    dset_source = ImageList(open(l).readlines(), transform=transforms.Compose([
+        transforms.Resize((448, 448)),
+        transforms.ToTensor())
+    ]), mode='RGB', root_folder=root_folder)
+    loaded_dset_source = LoadedImageList(dset_source)
+    with open(path, 'wb') as f:
+        pickle.dump([loaded_dset_source.samples.numpy(),
+                     loaded_dset_source.targets.numpy()], f)
+    return loaded_dset_source.samples.to(device
+                                         ), loaded_dset_source.targets.to(device)
+
+
 
 class ImageList(Dataset):
     def __init__(self, image_list, labels=None, transform=None, target_transform=None, mode='RGB', root_folder='', ratios=None):

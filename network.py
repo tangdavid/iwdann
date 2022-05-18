@@ -336,7 +336,7 @@ class LeNet(nn.Module):
     def __init__(self, ma=0.0):
         super(LeNet, self).__init__()
         self.conv_params = nn.Sequential(
-                nn.Conv2d(1, 20, kernel_size=5),
+                nn.Conv2d(3, 20, kernel_size=5),
                 nn.MaxPool2d(2),
                 nn.ReLU(),
                 nn.Conv2d(20, 50, kernel_size=5),
@@ -345,7 +345,7 @@ class LeNet(nn.Module):
                 nn.ReLU(),
                 )
 
-        class_num = 10
+        class_num = 3 #CHANGE
 
         self.fc_params = nn.Sequential(nn.Linear(50*4*4, 500), nn.ReLU(), nn.Dropout(p=0.5))
         self.classifier = nn.Linear(500, class_num)
