@@ -113,8 +113,8 @@ def build_uspsmnist(l, path, root_folder, device='cpu'):
 
 def build_iwild(l, path, root_folder, device='cpu'):
     dset_source = ImageList(open(l).readlines(), transform=transforms.Compose([
-        transforms.Resize((448, 448)),
-        transforms.ToTensor())
+        transforms.Resize((100, 100)),
+        transforms.ToTensor(),
     ]), mode='RGB', root_folder=root_folder)
     loaded_dset_source = LoadedImageList(dset_source)
     with open(path, 'wb') as f:

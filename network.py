@@ -347,7 +347,7 @@ class LeNet(nn.Module):
 
         class_num = 3 #CHANGE
 
-        self.fc_params = nn.Sequential(nn.Linear(50*4*4, 500), nn.ReLU(), nn.Dropout(p=0.5))
+        self.fc_params = nn.Sequential(nn.Linear(24200, 500), nn.ReLU(), nn.Dropout(p=0.5))
         self.classifier = nn.Linear(500, class_num)
         self.__in_features = 500
 

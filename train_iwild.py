@@ -18,6 +18,8 @@ import loss as loss_func
 import network
 from data_list import build_iwild, sample_ratios, subsampling
 
+os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
+
 
 def write_list(f, l):
     f.write(",".join(map(str, l)) + "\n")
